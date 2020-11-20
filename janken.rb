@@ -5,10 +5,10 @@ class Player
       puts "0:グー, 1:チョキ, 2:パー"
       input_hand = gets.chomp
       h = input_hand.to_i
-      if input_hand =~ /([0-2])/ && ( h == 0 || h ==1 || h == 2 )
+      if input_hand =~ /(^[0-2]$)/ && ( h == 0 || h ==1 || h == 2 )
         return h
       else
-        puts "無効な値です。0~2を入力してください。"
+        puts "0~2を入力してください。"
       end
     end
   end
