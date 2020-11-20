@@ -1,15 +1,14 @@
 class Player
   def hand
     puts "数字を入力してください。"
-    puts "0:グー, 1:チョキ, 2:パー"
-    input_hand = gets.to_i
     while true
-      if input_hand == 0 || input_hand ==1 || input_hand == 2
-        return input_hand
+      puts "0:グー, 1:チョキ, 2:パー"
+      input_hand = gets.chomp
+      h = input_hand.to_i
+      if input_hand =~ /([0-2])/ && ( h == 0 || h ==1 || h == 2 )
+        return h
       else
-        puts "0~2を入力してください。"
-        puts "0:グー, 1:チョキ, 2:パー"
-        input_hand = gets.to_i
+        puts "無効な値です。0~2を入力してください。"
       end
     end
   end
@@ -46,28 +45,3 @@ next_game = true
 while next_game
   next_game = janken.pon(player.hand, enemy.hand)
 end
-
-## クラスとインスタンスを使わない場合のプログラム
-
-# puts "数字を入力してください。"
-# puts "0:グー, 1:チョキ, 2:パー"
-# player_hand = gets.to_i
-# puts player_hand
-# hands = ["グー","チョキ","パー"]
-# enemy_hand = Random.rand(2)
-#
-# if player_hand >= 0 && player_hand <= 2
-#   versus_calc = (player_hand - enemy_hand + 3) % 3
-# else
-#   puts "無効な手です。0~2を入力してください"
-# end
-#
-# if versus_calc == 2
-#   result_message = "あなたの勝ちです。"
-# elsif versus_calc == 1
-#   result_message = "あなたの負けです。"
-# else
-#   result_message = "引き分けです。"
-# end
-#
-# puts "相手の出した手は#{hands[enemy_hand]}です。#{result_message}"
